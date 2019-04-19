@@ -1,3 +1,5 @@
+"use strict";
+
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
@@ -42,7 +44,5 @@ function add(fName, lName, Username, Password, Email) {
         console.log(xml);
 }
  
-
-app.listen(3000);
 
 app.listen(3000);
