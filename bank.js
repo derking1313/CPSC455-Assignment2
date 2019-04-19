@@ -10,21 +10,24 @@ app.use(bodyParser.urlencoded({ extended: true}));
 
 app.get("/", function(req, res){
         res.sendFile(__dirname + "/login.html");
+
 });
 
 app.get("/register", function(req, res){
         res.sendFile(__dirname + "/register.html");
 });
 
-app.post("/home", function(req, res) {
-        res.sendFile(__dirname + "/home.html");
+
+app.post("/login", function(req, res) {
         var fName = req.body.fName;
         var lName = req.body.lName;
         var Username = req.body.Username;
         var Password = req.body.Password;
         var Email = req.body.Email;
         add(fName, lName, Username, Password, Email);
+        res.sendFile(__dirname + "/login.html");
 });
+
 
 function add(fName, lName, Username, Password, Email) {
         var jsonxml = require("jsontoxml");
