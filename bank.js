@@ -9,6 +9,23 @@ var jsonxml = require("jsontoxml")
 var app = express();
 var xml = jsonxml ({"bankers": []});
 var jsonString;
+var i = 0;
+
+var xml = jsonxml({
+                users:[
+                        {name: "banker", children: [
+                                {name: "email", text: "Emailaaa@email"},
+                                {name: "username", text: "usernameaa"},
+                                {name: "password", text: "passwordaa"},
+                                {name: "firstname", text: "gyromeaae"},
+                                {name: "lastname", text: "hatcheara"},
+                                {name: "accounts"}
+                        ]}
+                ]
+});
+
+
+
 
 
 app.use(bodyParser.urlencoded({ extended: true}));
@@ -34,24 +51,28 @@ app.post("/login", function(req, res) {
 });
 
 
-function add(xml, fName, lName, Username, Password, Email) {
-        
+function add(fName, lName, Username, Password, Email) {
+        i = i + 1;
         console.log(xml);
-        parseString(xml, {trim:true}, function(err, result) {
+        xml2js.parseString(xml, {trim:true}, function(err, result) {
                 jsonString = result;
         });
-        
-        jsonString.bankers = [{name: "banker", }];
-        jsonString.bankers.banker = ({name: "email", text: Email});
-//      jsonString.bankers.banker.append({name: "username", text: Username});
-        //{name: "password", text: Password}];
-//              {name: "firstname", text: fName},
-//              {name: "lastname", text: lName},
-//              {name: "accounts"}
-//              );
-        
+
+        jsonString.users.banker[i] = [
+                                {name: "email", text: Email},
+                                {name: "username", text: Username},
+                                {name: "password", text: Password},
+                                {name: "firstname", text: fName},
+                                {name: "lastname", text: lName},
+                                {name: "accounts"}
+                                ]
+
+        for (let j = 0; j <= i; j++){
+        console.log(jsonString.users.banker[j]);
+        }
+
 }
-app.listen(3000);
+
 
 
  
