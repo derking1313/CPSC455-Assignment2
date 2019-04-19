@@ -8,10 +8,12 @@
 <!ELEMENT lastname (#PCDATA)>
 ]>
 
-<account>
-	<email> testEmail </email>
-	<username> testUser </username>
-	<password> testPassword </password>
-	<firstname> testFname </firstname>
-	<lastname> testLname </lastname>
-</account>
+<accounts>
+	<account>
+		<email> testEmail </email>
+		<username> testUser </username>
+		<password> testPassword </password>
+		<firstname> testFname </firstname>
+		<lastname> testLname </lastname>
+	</account>
+</accounts>
