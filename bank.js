@@ -15,12 +15,34 @@ app.get("/register", function(req, res){
 });
 
 app.post("/home", function(req, res) {
-        userName = res.body.usr;
-        passWord = res.body.psw;
-        Validate(userName, passWord)
+        res.sendFile(__dirname + "/home.html");
+        var fName = req.body.fName;
+        var lName = req.body.lName;
+        var Username = req.body.Username;
+        var Password = req.body.Password;
+        var Email = req.body.Email;
+        add(fName, lName, Username, Password, Email);
 });
 
-function Validate(userName, passWord) {
+function add(fName, lName, Username, Password, Email) {
+        var jsonxml = require("jsontoxml");
+        var xml = jsonxml({
+                bankers:[
+                        {name: "banker", children: [
+                                {name: "email", text: Email},
+                                {name: "username", text: Username},
+                                {name: "password", text: Password},
+                                {name: "firstname", text: fName},
+                                {name: "lastname", text: lName},
+                                {name: "accounts"}
+                        ]}
+                ]
+        })
 
+        console.log(xml);
 }
+ 
+
+app.listen(3000);
+
 app.listen(3000);
