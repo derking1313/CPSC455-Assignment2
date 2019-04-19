@@ -1,12 +1,16 @@
 <?xml version="1.0" ?>
 <!DOCTYPE bankers [
 <!ELEMENT bankers (banker,email,username,password,firstname,lastname,accounts,account,accountName,balance)>
-<!ELEMENT account (#PCDATA)>
+<!ELEMENT banker (#PCDATA)>
 <!ELEMENT email (#PCDATA)>
 <!ELEMENT username (#PCDATA)>
 <!ELEMENT password (#PCDATA)>
 <!ELEMENT firstname (#PCDATA)>
 <!ELEMENT lastname (#PCDATA)>
+<!ELEMENT accounts (#PCDATA)>
+<!ELEMENT account (#PCDATA)>
+<!ELEMENT accountName (#PCDATA)>
+<!ELEMENT balance  (#PCDATA)>
 ]>
 
 <bankers>
@@ -16,11 +20,11 @@
                 <password> testPassword </password>
                 <firstname> testFname </firstname>
                 <lastname> testLname </lastname>
-		<accounts>
-			<account>
-				<accountName> checking </accountName>
-				<balance> 0 </balance>
-			</account>
-		</accounts>	
-        </banker>      
-</bankers                                                                                                                          
+                <accounts>
+                        <account>
+                                <accountName> checking </accountName>
+                                <balance> 0 </balance>
+                        </account>
+                </accounts>
+        </banker>
+</bankers>
