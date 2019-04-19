@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!DOCTYPE account [
+<!ELEMENT account (email,username,password,firstname,lastname)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT username (#PCDATA)>
+<!ELEMENT password (#PCDATA)>
+<!ELEMENT firstname (#PCDATA)>
+<!ELEMENT lastname (#PCDATA)>
+]>
+
+<account>
+	<email> testEmail </email>
+	<username> testUser </username>
+	<password> testPassword </password>
+	<firstname> testFname </firstname>
+	<lastname> testLname </lastname>
+</account>
