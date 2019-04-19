@@ -4,7 +4,12 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
 const url = require("url");
+var parseString = require("xml2js").parseString;
+var jsonxml = require("jsontoxml")
 var app = express();
+var xml = jsonxml ({"bankers": []});
+var jsonString;
+
 
 app.use(bodyParser.urlencoded({ extended: true}));
 
@@ -29,23 +34,26 @@ app.post("/login", function(req, res) {
 });
 
 
-function add(fName, lName, Username, Password, Email) {
-        var jsonxml = require("jsontoxml");
-        var xml = jsonxml({
-                bankers:[
-                        {name: "banker", children: [
-                                {name: "email", text: Email},
-                                {name: "username", text: Username},
-                                {name: "password", text: Password},
-                                {name: "firstname", text: fName},
-                                {name: "lastname", text: lName},
-                                {name: "accounts"}
-                        ]}
-                ]
-        })
-
+function add(xml, fName, lName, Username, Password, Email) {
+        
         console.log(xml);
+        parseString(xml, {trim:true}, function(err, result) {
+                jsonString = result;
+        });
+        
+        jsonString.bankers = [{name: "banker", }];
+        jsonString.bankers.banker = ({name: "email", text: Email});
+//      jsonString.bankers.banker.append({name: "username", text: Username});
+        //{name: "password", text: Password}];
+//              {name: "firstname", text: fName},
+//              {name: "lastname", text: lName},
+//              {name: "accounts"}
+//              );
+        
 }
+app.listen(3000);
+
+
  
 
 app.listen(3000);
